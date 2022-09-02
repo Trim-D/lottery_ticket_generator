@@ -2,7 +2,13 @@
 
 import random
 tickets = 0
-req_tickets = int(input("How many tickets will you purchase? "))
+while True:
+    try:
+        req_tickets = int(input("How many tickets will you purchase? "))
+        break
+    except ValueError:
+        print("Sorry, that wasn't a valid number.  Please try again.")
+
 white_numbers = []
 mega_ball = []
 while tickets < req_tickets:
@@ -24,6 +30,4 @@ while tickets < req_tickets:
     del mega_ball[:]
     # increments # of tickets each cycle until loop condition met
     tickets += 1
-
-
 
