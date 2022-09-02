@@ -2,12 +2,8 @@
 
 import random
 tickets = 0
-while True:
-    try:
-        req_tickets = int(input("How many tickets will you purchase? "))
-        break
-    except ValueError:
-        print("Sorry, that wasn't a valid number.  Please try again.")
+
+req_tickets = int(input("How many tickets will you purchase? "))
 
 white_numbers = []
 mega_ball = []
@@ -21,7 +17,7 @@ while tickets < req_tickets:
         else:   
             white_numbers.append(num_selection)
     # generate 1 random number between 1-25 for each ticket
-    for mega_num in range(req_tickets - 1):
+    for mega_num in range(req_tickets):
         mega_selection = random.randint(1,25)
         mega_ball.append(mega_selection)
     print(*white_numbers, f"({mega_ball[0]})")
