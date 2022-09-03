@@ -3,29 +3,23 @@
 import random
 tickets = 0
 
-req_tickets = int(input("How many tickets will you purchase? "))
+while True:
+    try:
+        req_tickets = int(input("How many tickets will you purchase? "))
+        if req_tickets < 1:
+            raise ValueError
+    except ValueError:
+        print("Please select a numeric value of 1 or more.")
+    else:
+        break
 
-white_numbers = []
-mega_ball = []
+
+white_numbers = list(range(1,71))
+mega_ball = list(range(1,26))
 
 while tickets < req_tickets:
-    # generate random numbers between 1-70 for each ticket
-    for white_num in range(1, 10):
-        num_selection = random.randint(1, 70)
-        # checks for duplicate values, re-runs generator if found, otherwise, appends to list
-        if num_selection in white_numbers:
-            num_selection = random.randint(1, 70)
-            white_numbers.append(num_selection)
-        else:   
-            white_numbers.append(num_selection)
-    # generate 1 random number between 1-25 for each ticket
-    for mega_num in range(req_tickets):
-        mega_selection = random.randint(1,25)
-        mega_ball.append(mega_selection)
+    num_selection = random.shuffle(white_numbers)
+    num_selection = random.shuffle(mega_ball)
     print(*white_numbers[0:5], f"({mega_ball[0]})")
-    # deletes all values in the list each cycle
-    del white_numbers[:]
-    del mega_ball[:]
-    # increments # of tickets each cycle until loop condition met
     tickets += 1
 
